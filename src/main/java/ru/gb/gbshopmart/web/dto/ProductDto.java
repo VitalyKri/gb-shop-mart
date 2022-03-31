@@ -7,6 +7,7 @@ import ru.gb.gbshopmart.entity.enums.Status;
 import javax.validation.constraints.*;
 import java.math.BigDecimal;
 import java.time.LocalDate;
+import java.util.Set;
 
 @Getter
 @Setter
@@ -27,4 +28,6 @@ public class ProductDto {
     @NotNull
     private Status status;
     private String manufacturer;
+
+    private Set<CategoryDto> categories;
 }

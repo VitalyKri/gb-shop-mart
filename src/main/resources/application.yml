@@ -1,4 +1,13 @@
-spring.datasource:
-  url: "jdbc:postgresql://localhost:5432/gb_shop"
-  username: "geek"
-  password: "geek"
+spring:
+  datasource:
+    url: "jdbc:postgresql://localhost:5432/gb_shop"
+    username: "geek"
+    password: "geek"
+  mvc:
+    pathmatch:
+      matching-strategy: ant_path_matcher
+logging:
+  level:
+    org:
+      springframework:
+        web:    trace
