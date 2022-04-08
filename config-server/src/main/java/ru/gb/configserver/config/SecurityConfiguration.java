@@ -11,6 +11,7 @@ import org.springframework.security.config.annotation.web.configuration.WebSecur
 @EnableWebSecurity
 public class SecurityConfiguration {
 
+
     @Configuration
     @Order(1)
     @ConditionalOnProperty(value = "security.endpoint.decrypt.enabled", matchIfMissing = true, havingValue = "false")

@@ -9,6 +9,7 @@ import javax.persistence.*;
 import java.math.BigDecimal;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.util.Set;
 
 @Setter
 @Getter
@@ -32,6 +33,13 @@ public class Product extends InfoEntity {
     @Column(name = "status")
     private Status status;
 
+
+    @ManyToMany(cascade = CascadeType.MERGE)
+    @JoinTable(name = "product_category",
+            joinColumns = @JoinColumn(name = "product_id"),
+            inverseJoinColumns =@JoinColumn(name = "category_id"))
+    private Set<Category> categories;
+
     @Override
     public String toString() {
         return "Product{" +
@@ -43,15 +51,27 @@ public class Product extends InfoEntity {
                 "}\n";
     }
 
+    public Product(String title, BigDecimal cost, LocalDate manufactureDate, Manufacturer manufacturer, Status status, Set<Category> categories) {
+        this.title = title;
+        this.cost = cost;
+        this.manufactureDate = manufactureDate;
+        this.manufacturer = manufacturer;
+        this.status = status;
+        this.categories = categories;
+    }
+
     @Builder
     public Product(Long id, int version, String createdBy, LocalDateTime createdDate, String lastModifiedBy,
                    LocalDateTime lastModifiedDate, String title, BigDecimal cost, LocalDate manufactureDate,
-                   Manufacturer manufacturer, Status status) {
+                   Manufacturer manufacturer, Status status,Set<Category> categories) {
         super(id, version, createdBy, createdDate, lastModifiedBy, lastModifiedDate);
         this.title = title;
         this.cost = cost;
         this.manufactureDate = manufactureDate;
         this.manufacturer = manufacturer;
         this.status = status;
+        this.categories = categories;
     }
+
+
 }

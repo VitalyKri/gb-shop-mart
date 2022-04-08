@@ -5,5 +5,10 @@ spring:
     hibernate:
       ddl-auto: create-drop
   datasource:
-    hikari:
-      driver-class-name: 'org.h2.Driver'
+    driver-class-name: org.h2.Driver
+    url: "jdbc:h2:mem:testdb"
+    username: "geek"
+    password: "geek"
+  h2:
+    console:
+      enabled: true
