@@ -28,8 +28,8 @@ import java.util.stream.Collectors;
 public class ProductService {
     private final ProductDao productDao;
     private final ManufacturerDao manufacturerDao;
-    private final ProductMapper productMapper;
     private final CategoryDao categoryDao;
+    private final ProductMapper productMapper;
 
     @Transactional(propagation = Propagation.NEVER, isolation = Isolation.DEFAULT)
     public long count() {
@@ -39,7 +39,8 @@ public class ProductService {
 
     @Transactional
     public ProductDto save(final ProductDto productDto) {
-        Product product = productMapper.toProduct(productDto, manufacturerDao, categoryDao);
+        Product product = productMapper.toProduct(productDto, manufacturerDao,categoryDao);
+
         if (product.getId() != null) {
             productDao.findById(productDto.getId()).ifPresent(
                     (p) -> product.setVersion(p.getVersion())
