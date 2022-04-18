@@ -1,3 +1,6 @@
 [submodule "gb-api-mart"]
 	path = gb-api-mart
-	url = git@github.com:kropotov-geekbrains/gb-api-mart.git
+	url = git@github.com:VitalyKri/gb-api-mart.git
+[submodule "thymeleaf-shop"]
+	path = thymeleaf-shop
+	url = git@github.com:VitalyKri/thymeleaf-shop.git
