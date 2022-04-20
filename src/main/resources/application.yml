@@ -7,6 +7,9 @@ spring.datasource:
   username: "geek"
   password: "geek"
 spring:
+  mvc:
+    pathmatch:
+      matching-strategy: ant_path_matcher
   profiles:
     active: ${SPRING_PROFILES_INCLUDE:dev}
   config:
