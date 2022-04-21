@@ -4,3 +4,6 @@
 [submodule "thymeleaf-shop"]
 	path = thymeleaf-shop
 	url = git@github.com:VitalyKri/thymeleaf-shop.git
+[submodule "gb-jms-mart"]
+   	path = gb-jms-mart
+   	url = git@github.com:VitalyKri/thymeleaf-shop.git
