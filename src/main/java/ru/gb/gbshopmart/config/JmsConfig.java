@@ -1,15 +1,20 @@
 package ru.gb.gbshopmart.config;
 
+import lombok.RequiredArgsConstructor;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.jms.support.converter.MappingJackson2MessageConverter;
 import org.springframework.jms.support.converter.MessageConverter;
 import org.springframework.jms.support.converter.MessageType;
+import ru.gb.gbapi.config.GbApiProperties;
 
 @Configuration
+@RequiredArgsConstructor
 public class JmsConfig {
 
-    public static final String ORDER_CHANGED_QUEUE = "order-changed"; // todo дз настроить название очереди через конфиг-сервер
+    private final GbApiProperties gbApiProperties;
+
+    public final String ORDER_CHANGED_QUEUE ="OrderShop";
 
     @Bean
     public MessageConverter messageConverter() {
