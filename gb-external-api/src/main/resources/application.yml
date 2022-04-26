@@ -3,6 +3,10 @@ server:
   servlet:
     context-path: '/external'
 spring:
+  mvc:
+    pathmatch:
+      matching-strategy: ant_path_matcher
+  port: 8080
   profiles:
     active: ${SPRING_PROFILES_INCLUDE:dev}
   config:

@@ -2,7 +2,16 @@ server:
   port: 8080
 #  servlet:
 #    context-path: '/internal'
+spring.datasource:
+  url: "jdbc:postgresql://localhost:5432/gb_shop"
+  username: "geek"
+  password: "geek"
+#  servlet:
+#    context-path: '/internal'
 spring:
+  mvc:
+    pathmatch:
+      matching-strategy: ant_path_matcher
   profiles:
     active: ${SPRING_PROFILES_INCLUDE:dev}
   config:
