@@ -11,6 +11,8 @@ import java.util.Optional;
 @EnableJpaAuditing(auditorAwareRef = "auditorAwareBean")
 public class ShopConfig {
 
+
+
     @Bean
     public AuditorAware<String> auditorAwareBean() {
         return () -> Optional.of("User");

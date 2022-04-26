@@ -4,10 +4,10 @@ spring:
 encrypt:
   key-store:
     alias: ${ENCRYPT_KEYSTORE_ALIAS:gbshopmart}
-    location: ${ENCRYPT_KEYSTORE_LOCATION:classpath:server2.jks}
+    location:  ${ENCRYPT_KEYSTORE_LOCATION:classpath:server2.jks}
     password: ${ENCRYPT_KEYSTORE_PASSWORD:123456}
 
 
-#  keytool -genkeypair -alias gbshopmart -keyalg RSA \
+#   keytool -genkeypair -alias gbshopmart -keyalg RSA  \
 #  -dname "CN=Web Server,OU=Unit,O=geekbrains,L=Moscow,C=Russia" \
 #  -keypass 123456 -keystore server.jks -storepass 123456
