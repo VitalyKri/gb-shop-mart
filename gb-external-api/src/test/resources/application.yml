@@ -1,0 +1,28 @@
+spring:
+  jpa:
+    database-platform: org.hibernate.dialect.H2Dialect
+    generate-ddl: true
+    hibernate:
+      ddl-auto: create-drop
+  datasource:
+    hikari:
+      driver-class-name: 'org.h2.Driver'
+  mvc:
+    pathmatch:
+      matching-strategy: ant_path_matcher
+gb.api:
+  endpoint:
+    manufacturer-url: 'stub'
+    category-url: 'stub'
+    product-url: 'stub'
+    order-url: 'stub'
+  connection:
+    connectTimeout: 60 # Seconds
+    readTimeout: 10 # Seconds
+    period: 3000 # Millis
+    maxPeriod: 5000 # Millis
+    maxAttempts: 3
+jwt:
+  token:
+    expired: 86_400_000
+    secret: 'jwtsecret'

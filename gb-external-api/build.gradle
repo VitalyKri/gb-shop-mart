@@ -42,6 +42,7 @@ dependencies {
     testImplementation 'org.springframework.boot:spring-boot-starter-test'
     implementation 'io.jsonwebtoken:jjwt:0.9.1'
 
+    testImplementation 'com.h2database:h2'
 
     implementation files('../lib/gb-api-mart-0.0.14-mart-plain.jar')
 

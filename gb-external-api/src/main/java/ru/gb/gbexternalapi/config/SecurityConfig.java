@@ -21,12 +21,14 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
     public static final String LOGIN_ENDPOINT = "/api/v1/auth/login";
-    public static final String USER_ENDPOINT = "/api/v1/user";
+    public static final String USER_ENDPOINT = "/api/v1/user/**";
+    public static final String SWAGGER_ENDPOINT = "/swagger-ui.html#";
 
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         http.authorizeRequests(
                 (requests) -> {
+                    requests.antMatchers(SWAGGER_ENDPOINT).permitAll();
                     requests.antMatchers("/product/all").permitAll();
                     requests.mvcMatchers(HttpMethod.GET, "/product/{productId}").permitAll();
                     requests.antMatchers(LOGIN_ENDPOINT).permitAll();

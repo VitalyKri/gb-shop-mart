@@ -14,7 +14,7 @@ public class JmsConfig {
 
     private final GbApiProperties gbApiProperties;
 
-    public final String ORDER_CHANGED_QUEUE ="OrderShop";
+    public static final String ORDER_CHANGED_QUEUE ="OrderShop";
 
     @Bean
     public MessageConverter messageConverter() {
