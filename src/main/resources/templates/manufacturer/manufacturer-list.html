@@ -12,7 +12,7 @@
 </head>
 <body>
 
-<div th:replace="~{navbar :: navi(ProductList)}"/>
+<div th:replace="~{common/navbar :: navi(ManufacturerForm)}" />
 
 <div class="container">
     <span th:if="${manufacturers.size() == 0}">Товаров нет</span>
@@ -47,6 +47,6 @@
     </div>
 </div>
 
-<div th:replace="~{footer :: footerBlock}"/>
+<div th:replace="~{common/footer :: footerBlock}" />
 </body>
 </html>
