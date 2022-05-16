@@ -17,6 +17,8 @@
 <div class="container">
 <form class="form-horizontal" th:action="@{/product}" th:object="${productDto}" method="post" enctype="multipart/form-data">
     <input type="hidden" th:field="*{id}">
+    <div class="error" th:if="${#fields.hasErrors('title')}"
+         th:errors="*{title}"/>
     <div class="col-md-8">
         <div class="input-group mb-3">
             <span class="input-group-text" id="title">Название</span>
@@ -24,6 +26,8 @@
                    aria-describedby="inputGroup-sizing-default" th:field="*{title}">
         </div>
     </div>
+    <div class="error" th:if="${#fields.hasErrors('cost')}"
+         th:errors="*{cost}"/>
     <div class="col-md-8">
         <div class="input-group mb-3">
             <span class="input-group-text" id="cost">Цена</span>
@@ -32,14 +36,18 @@
         </div>
     </div>
 
+    <div class="error" th:if="${#fields.hasErrors('manufactureDate')}"
+         th:errors="*{manufactureDate}"/>
     <div class="col-md-8">
         <div class="input-group mb-2">
             <span class="input-group-text" id="manufactureDate">Дата изготовления</span>
             <input type="text" class="form-date" name="strManufacture"
-                   id="strManufacture-id" th:value="*{manufactureDate}" placeholder="дд-мм-гггг">
+                   id="strManufacture-id" th:value="*{manufactureDate}" placeholder="дд.мм.гггг">
         </div>
     </div>
-    
+
+    <div class="error" th:if="${#fields.hasErrors('status')}"
+         th:errors="*{status}"/>
     <div class="col-md-8">
         <select class="form-select" aria-label="Default select example" th:field="*{status}">
             <option th:each="statusValue : ${T(ru.gb.gbapi.common.enums.Status).values()}"
@@ -49,6 +57,8 @@
 
     </div>
 
+    <div class="error" th:if="${#fields.hasErrors('manufacturer')}"
+         th:errors="*{manufacturer}"/>
     <div class="col-md-8">
         <label for="manufacturer-id">Производитель:</label>
         <select class="form-select" id="manufacturer-id" th:field="*{manufacturer}">
@@ -59,6 +69,8 @@
 
     </div>
 
+    <div class="error" th:if="${#fields.hasErrors('categories')}"
+         th:errors="*{categories}"/>
     <div class="col-md-8">
         <select class="form-select"  th:field="*{categories}" multiple="multiple">
             <option th:each="category : ${categoryService.findAll()}"
@@ -87,9 +99,23 @@
     <div class="col-md-8">
         <div class="input-group mb-3">
             <span class="input-group-text" id="image">Изображение</span>
-            <input type="file" name="file" class="form-control-file" accept="image/*">
+            <input type="file" name="files" class="form-control-file" accept="image/*" multiple="multiple">
         </div>
     </div>
+
+    <table id="customerTable" class="table">
+        <thead>
+        <tr>
+            <th>File Name</th>
+            <th>File Type</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="image: *{images}">
+            <td th:text="${image.path}"></td>
+            <td><img th:src="@{'/product/image/' + ${image.path}}" alt="" width="50px" height="50px"/></td>
+        </tr>
+        </tbody>
 
     <div class="col-12">
         <button class="btn btn-primary" type="submit">Сохранить</button>

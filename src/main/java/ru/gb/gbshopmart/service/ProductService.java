@@ -17,6 +17,7 @@ import ru.gb.gbshopmart.dao.ManufacturerDao;
 import ru.gb.gbshopmart.dao.ProductDao;
 import ru.gb.gbshopmart.entity.Product;
 import ru.gb.gbshopmart.entity.ProductImage;
+import ru.gb.gbshopmart.web.dto.mapper.ProductImageMapper;
 import ru.gb.gbshopmart.web.dto.mapper.ProductMapper;
 
 

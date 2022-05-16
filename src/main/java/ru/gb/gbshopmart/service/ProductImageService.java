@@ -67,6 +67,20 @@ public class ProductImageService {
         }
     }
 
+    public BufferedImage loadProductImageByPath(String pathFile) throws IOException {
+        try {
+            Resource resource = loadAsResource(path, pathFile);
+            if (resource.exists()) {
+                return ImageIO.read(resource.getFile());
+            } else {
+                log.error("Image not found!"+pathFile);
+                throw new FileNotFoundException("File " + pathFile + " not found!");
+            }
+        } catch (MalformedInputException | FileNotFoundException ex) {
+            return null;
+        }
+    }
+
     private Resource loadAsResource(String path, String filename) {
         Path file = rootLocation.resolve(path).resolve(filename);
         try {

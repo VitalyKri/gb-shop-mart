@@ -5,17 +5,20 @@ import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
 import ru.gb.gbapi.category.dto.CategoryDto;
 import ru.gb.gbapi.product.dto.ProductDto;
+import ru.gb.gbapi.product.dto.ProductImageDto;
 import ru.gb.gbshopmart.dao.CategoryDao;
 import ru.gb.gbshopmart.dao.ManufacturerDao;
 import ru.gb.gbshopmart.entity.Category;
 import ru.gb.gbshopmart.entity.Manufacturer;
 import ru.gb.gbshopmart.entity.Product;
+import ru.gb.gbshopmart.entity.ProductImage;
 
+import java.util.List;
 import java.util.NoSuchElementException;
 import java.util.Set;
 import java.util.stream.Collectors;
 
-@Mapper(uses = {ManufacturerMapper.class, CategoryMapper.class})
+@Mapper(uses = {ManufacturerMapper.class, CategoryMapper.class,ProductImageMapper.class})
 public interface ProductMapper {
     Product toProduct(ProductDto productDto, @Context ManufacturerDao manufacturerDao, @Context CategoryDao categoryDao);
 

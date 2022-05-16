@@ -91,12 +91,24 @@ public class ProductController {
         return "redirect:/product/all";
     }
 
-    // todo ДЗ* - сделать поддержку множества картинок для для страницы подробной информации с продуктами
+    // todo ДЗ* метод оставил. создал новый в котором взвращает по имени файла.
     @GetMapping(value = "images/{id}", produces = MediaType.IMAGE_PNG_VALUE)
-    public @ResponseBody byte[] getImage(@PathVariable Long id) throws IOException {
+    public @ResponseBody byte[] getImageByIdProduct(@PathVariable Long id) throws IOException {
         try {
             ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream();
             ImageIO.write(productImageService.loadProductImageAsResource(id), "png", byteArrayOutputStream);
+            return byteArrayOutputStream.toByteArray();
+        } catch (IOException e) {
+            throw e; // todo ДЗ - заменить на ProductImageNotFoundException
+        }
+    }
+
+    // todo ДЗ* - сделать поддержку множества картинок для для страницы подробной информации с продуктами
+    @GetMapping(value = "image/{name}", produces = MediaType.IMAGE_PNG_VALUE)
+    public @ResponseBody byte[] getImageByPath(@PathVariable String name) throws IOException {
+        try {
+            ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream();
+            ImageIO.write(productImageService.loadProductImageByPath(name), "png", byteArrayOutputStream);
             return byteArrayOutputStream.toByteArray();
         } catch (IOException e) {
             throw e; // todo ДЗ - заменить на ProductImageNotFoundException
