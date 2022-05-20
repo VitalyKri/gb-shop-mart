@@ -9,6 +9,8 @@ import javax.persistence.*;
 import java.math.BigDecimal;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Set;
 
 @Setter
@@ -28,6 +30,16 @@ public class Product extends InfoEntity {
     @ManyToOne
     @JoinColumn(name = "manufacturer_id")
     private Manufacturer manufacturer;
+
+    @Singular
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "product")
+    private List<ProductImage> images;
+
+    @Column(name = "short_description")
+    private String shortDescription;
+
+    @Column(name = "full_description")
+    private String fullDescription;
 
     @ManyToMany
     @JoinTable(
@@ -52,16 +64,27 @@ public class Product extends InfoEntity {
                 "}\n";
     }
 
+    public void addImage(ProductImage productImage) {
+        if (images == null) {
+            images = new ArrayList<>();
+        }
+        images.add(productImage);
+    }
+
     @Builder
 
     public Product(Long id, int version, String createdBy, LocalDateTime createdDate, String lastModifiedBy,
                    LocalDateTime lastModifiedDate, String title, BigDecimal cost, LocalDate manufactureDate,
-                   Manufacturer manufacturer, Set<Category> categories, Status status) {
+                   Manufacturer manufacturer, List<ProductImage> images, String shortDescription, String fullDescription,
+                   Set<Category> categories, Status status) {
         super(id, version, createdBy, createdDate, lastModifiedBy, lastModifiedDate);
         this.title = title;
         this.cost = cost;
         this.manufactureDate = manufactureDate;
         this.manufacturer = manufacturer;
+        this.images = images;
+        this.shortDescription = shortDescription;
+        this.fullDescription = fullDescription;
         this.categories = categories;
         this.status = status;
     }
