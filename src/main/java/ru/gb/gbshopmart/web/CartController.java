@@ -33,17 +33,17 @@ public class CartController {
         return "redirect:" + referer;
     }
 
-    @GetMapping("/delete/{id}")
-    public String deleteProductFromCart(@PathVariable("id") Long id, HttpServletRequest httpServletRequest) {
-        cartService.removeFromCart(httpServletRequest.getSession(), id);
-        String referer = httpServletRequest.getHeader("referer");
-        return "redirect:" + referer;
-    }
+        @GetMapping("/delete/{id}")
+        public String deleteProductFromCart(@PathVariable("id") Long id, HttpServletRequest httpServletRequest) {
+            cartService.removeFromCart(httpServletRequest.getSession(), id);
+            String referer = httpServletRequest.getHeader("referer");
+            return "redirect:" + referer;
+        }
 
-    @GetMapping("/reset")
-    public String resetCart(HttpServletRequest httpServletRequest) {
-        cartService.resetCart(httpServletRequest.getSession());
-        String referer = httpServletRequest.getHeader("referer");
-        return "redirect:" + referer;
-    }
+        @GetMapping("/reset")
+        public String resetCart(HttpServletRequest httpServletRequest) {
+            cartService.resetCart(httpServletRequest.getSession());
+            String referer = httpServletRequest.getHeader("referer");
+            return "redirect:" + referer;
+        }
 }
